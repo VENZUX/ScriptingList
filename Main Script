@@ -1,1 +1,21 @@
-
+local player = game.Players.LocalPlayer
+local character = player.Character
+if character then
+    local healthProperties = character:FindFirstChild("HealthProperties")
+    if healthProperties then
+        local health = healthProperties.Health
+        if health and health.Value < 130 then
+            local hrp = character:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local cords = Vector3.new(290, 425, 370)
+                hrp.CFrame = CFrame.new(cords)
+            else
+                warn("HumanoidRootPart not found.")
+            end
+        end
+    else
+        warn("HealthProperties not found.")
+    end
+else
+    warn("Player character not found.")
+end
